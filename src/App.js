@@ -1,19 +1,28 @@
-//Exports that are not set as the default will require curly braces.
-import Footer from './components/Footer';
+import { Routes, Route } from 'react-router-dom';
+import ContactPage from './pages/ContactPage';
+import HomePage from './pages/HomePage';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import CampsitesDirectoryPage from './pages/CampsitesDirectoryPage';
-
-// import React from 'react';
+import CampsiteDetailPage from './pages/CampsiteDetailPage';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <Header/>
-      <CampsitesDirectoryPage />
-      <Footer />
-    </div>
-  );
+    return (
+        <div className='App'>
+            <Header />
+            <Routes>
+            <Route
+                    path='directory/:campsiteId'
+                    element={<CampsiteDetailPage />}
+                />
+                <Route path='/' element={<HomePage />} />
+                <Route path='contact' element={<ContactPage />} />
+                <Route path='directory' element={<CampsitesDirectoryPage />} />
+            </Routes>
+            <Footer />
+        </div>
+    );
 }
 
 export default App;
