@@ -1,5 +1,5 @@
 import { Button, Label, Col, FormGroup } from 'reactstrap';
-import { Formik, Field, Form, ErrorMessage } from 'formik'; // doesn't wanna import my error message!
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import validateContactForm from '../utils/validateContactForm';
 
 const ContactForm = () => {
@@ -93,8 +93,8 @@ const ContactForm = () => {
                             name='agree'
                             type='checkbox'
                             className='form-check-input'
-                        /> {' '} // adding a space after check mark
-                        May we contact you?
+                        /> {'  '} {/* adding a space after check mark*/}
+                         May we contact you?
                     </Label>
                     <Col md='4'>
                         <Field

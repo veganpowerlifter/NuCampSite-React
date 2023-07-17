@@ -47,11 +47,11 @@ const CommentForm = ({ campsiteid }) => {
                                     <option>3</option>
                                     <option>4</option>
                                     <option>5</option>
-                                </Field>
-                                <Label htmlFor={:'rating'} >
-                                Rating
-                            </Label>
-                        </FormGroup>
+                                 </Field>
+                                 < Label htmlFor='rating' >
+                                 Rating
+                                 </Label>
+                             </FormGroup>
 
                         <FormGroup>
                             <Field
@@ -59,7 +59,7 @@ const CommentForm = ({ campsiteid }) => {
                                 placeholder='Your Name'
                                 className='form-control'
                             />
-                            <Label htmlFor={:'author'} >
+                            <Label htmlFor='author' >
                             Your Name
                         </Label>
                     </FormGroup>
@@ -71,7 +71,7 @@ const CommentForm = ({ campsiteid }) => {
                             rows='12'
                             className='form-control'
                         />
-                        <Label htmlFor={:'commentText'} >
+                        <Label htmlFor='commentText' >
                         Comment
                     </Label>
                 </FormGroup>
