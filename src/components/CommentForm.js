@@ -1,6 +1,7 @@
 import useState from 'react';
 import { Button, Modal, ModalHeader, ModalBody, FormGroup, Label } from 'reactstrap';
 import { Formik, Field, Form } from 'formik';
+import {validateCommentForm, formik, ErrorMessage} from '../../utils/validateCommentForm';
 
 const CommentForm = ({ campsiteid }) => {
 
@@ -28,6 +29,7 @@ const CommentForm = ({ campsiteid }) => {
                 </ModalHeader>
                 < ModalBody>
                     <Formik initialValue={{
+                        validate={validateCommentForm},
                         rating,
                         author,
                         commentText: ''
@@ -48,6 +50,9 @@ const CommentForm = ({ campsiteid }) => {
                                     <option>4</option>
                                     <option>5</option>
                                  </Field>
+                                    <ErrorMessage name='rating'>
+                            {(msg) => <p className='text-danger'>{msg}</p>}
+                                    </ErrorMessage>
                                  < Label htmlFor='rating' >
                                  Rating
                                  </Label>
@@ -59,6 +64,9 @@ const CommentForm = ({ campsiteid }) => {
                                 placeholder='Your Name'
                                 className='form-control'
                             />
+                                    <ErrorMessage name='author'>
+                                    {(msg) => <p className='text-danger'>{msg}</p>}
+                                    </ErrorMessage>
                             <Label htmlFor='author' >
                             Your Name
                         </Label>
