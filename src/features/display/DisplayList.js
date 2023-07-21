@@ -1,21 +1,28 @@
+import { useSelector } from 'react-redux';
 import { Col, Row } from 'reactstrap';
 // import DisplayCard from './DisplayCard';
 import AnimatedDisplayCard from './AnimatedDisplayCard';
 import { selectFeaturedCampsite } from '../campsites/campsitesSlice';
 import { selectFeaturedPromotion } from '../promotions/promotionsSlice';
-import {selectFeaturedPartner} from '../partners/partnersSlice';
+import { selectFeaturedPartner } from '../partners/partnersSlice';
 
 const DisplayList = () => {
-    const items = [selectFeaturedCampsite(), selectFeaturedPromotion(), selectFeaturedPartner()];
+    const items = useSelector((state) => [
+        selectFeaturedCampsite(state),
+        selectFeaturedPromotion(state),
+        selectFeaturedPartner(state)
+    ]);
+
+    console.log('display items:', items);
 
     return (
         <Row>
             {items.map((item, idx) => {
                 return (
-                    item && ( //if the operator doesn't find a featured campsite, it returns undefined
-                    <Col md className='m-1' key={idx}>
-                        <AnimatedDisplayCard item={item} />
-                    </Col>
+                    item && (
+                        <Col md className='m-1' key={idx}>
+                            <AnimatedDisplayCard item={item} />
+                        </Col>
                     )
                 );
             })}
@@ -23,4 +30,4 @@ const DisplayList = () => {
     );
 };
 
-export default DisplayList;
+export default DisplayList
