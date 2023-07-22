@@ -1,3 +1,4 @@
+import {useDispatch} from 'react-redux';
 import useState from 'react';
 import { Button, Modal, ModalHeader, ModalBody, FormGroup, Label } from 'reactstrap';
 import { Formik, Field, Form } from 'formik';
@@ -6,15 +7,19 @@ import {validateCommentForm, formik, ErrorMessage} from '../../utils/validateCom
 const CommentForm = ({ campsiteid }) => {
 
     const [modalOpen, setModalOpen] = useState(false);
-
+    const dispatch = useDispatch();
+    
     const handleSubmit = (values) => {
         const comment = {
             campsiteId: parseInt(campsiteId),
             rating: values.rating,
             author: values.author,
-            text: values.commentText
+            text: values.commentText,
+            date: new Date(Date.now()).toISOString()
         };
+        
         console.log(comment);
+        dispatch(addComment(comment));
         setModalOpen(false);
     };
 
