@@ -13,7 +13,5 @@ const promotionsSlice = createSlice({
 export const promotionsReducer = promotionsSlice.reducer;
 
 export const selectFeaturedPromotion = (state) => {
-    return state.promotions.promotionsArray.find(
-        (promotion) => promotion.featured
-    );
+    return state.promotions.promotionsArray.find((promotion) => promotion.featured);
 };
