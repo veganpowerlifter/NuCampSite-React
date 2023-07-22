@@ -9,8 +9,9 @@ import {
     Label,
     Button
 } from 'reactstrap';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import defaultAvatar from '../../app/assets/img/unicorn.png';
+import validateUserLoginForm from '../../utils/valudateUserLoginForm';
 
 const UserLoginForm = () => {
         const [loginModalOpen, setLoginModalOpen] = useState(false);
@@ -53,18 +54,25 @@ return (
         <ModalBody>
             <Formik initialValues={{
                 username:'',
-                password:''
-            }}
-            onSubmit={handleLogin}> 
+                password:'',
+                            }}
+            onSubmit={handleLogin}
+            validate={validateUserLoginForm}>
             {/*passing a function not an object = one set of curly*/}
             <Form>
                 <FormGroup>
                     <Label htmlFor='username'> Username </Label>
                     <Field id='username' placeholder='Username' className='form-control' name='username' />
+                    <ErrorMessage name='username'>
+                            {(msg) => <p className='text-danger'>{msg}</p>}
+                        </ErrorMessage>
                 </FormGroup>
                 <FormGroup>
                 <Label htmlFor='password'> Password </Label>
                     <Field id='password' placeholder='Password' className='form-control' name='password' />
+                    <ErrorMessage name='password'>
+                            {(msg) => <p className='text-danger'>{msg}</p>}
+                        </ErrorMessage>
                 </FormGroup>
                 <Button type='submit' color='primary'> Login </Button>
             </Form>
