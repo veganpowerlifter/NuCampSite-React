@@ -8,11 +8,11 @@ const CampsiteCard = ({campsite}) => { // week 2 - we've changed all props to ca
         <Card>
             <CardImg
                 width='100%'
-                src={image}
-                alt={name}
+                src={campsite.image}
+                alt={campsite.name}
             />
             <CardImgOverlay>
-                <CardTitle>{name}</CardTitle>
+                <CardTitle>{campsite.name}</CardTitle>
             </CardImgOverlay>
         </Card>
         </Link>

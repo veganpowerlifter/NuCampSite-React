@@ -1,33 +1,10 @@
-import { useSelector } from 'react-redux';
 import CommentForm from '../CommentForm.js';
 import {Col} from 'reactstrap';
 import Comment from './comment.js';
 import { selectCommentsByCampsiteId } from './commentsSlice.js';
-import Loading from '../../components/Loading';
-import Error  from '../../components/Error';
 
 const CommentsList = ({ campsiteId }) => {
-    const comments = useSelector(selectCommentsByCampsiteId(campsiteId));
-    console.log('comments:', comments);
-
-const isLoading = useSelector((state) => state.comments.isLoading);
-const errMsg = useSelector((state) => state.comments.errMsg); // week 5
-    
-    if (isLoading) {
-        return (
-            <Row>
-                <Loading />
-            </Row>
-        );
-    }
-    
-    if (errMsg) {
-        return (
-            <Row>
-                <Error errMsg={errMsg} />
-            </Row>
-        );
-    }
+    const comments = selectCommentsByCampsiteId(campsiteId);
     
     if (comments && comments.length > 0) {
         return (

@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// import { PARTNERS } from '../../app/shared/PARTNERS';
+// import { CAMPSITES } from '../../app/shared/CAMPSITES';
 import { baseUrl } from '../../app/shared/baseUrl';
 import { mapImageURL } from '../../utils/mapImageURL';
 
-export const fetchPartners = createAsyncThunk(
-    'partners/fetchPartners',
+export const fetchCampsites = createAsyncThunk(
+    'campsites/fetchCampsites',
     async () => {
-        const response = await fetch(baseUrl + 'partners');
+        const response = await fetch(baseUrl + 'campsites');
         if (!response.ok) {
             return Promise.reject('Unable to fetch, status: ' + response.status);
         }
@@ -16,7 +16,7 @@ export const fetchPartners = createAsyncThunk(
 );
 
 const initialState = {
-    partnersArray: [],
+    campsitesArray: [],
     isLoading: true,
     errMsg: ''
 };
@@ -41,18 +41,18 @@ const partnersSlice = createSlice({
     }
 });
 
-export const partnersReducer = partnersSlice.reducer;
+export const campsitesReducer = campsitesSlice.reducer;
 
-export const selectAllPartners = (state) => {
-    return state.partners.partnersArray;
+export const selectAllCampsites = (state) => {
+    return state.campsites.campsitesArray;
 };
 
-export const selectFeaturedPartner = (state) => {
-    return {
-        featuredItem: state.partners.partnersArray.find(
-            (partner) => partner.featured
-        ),
-        isLoading: state.partners.isLoading,
-        errMsg: state.partners.errMsg
-    };
+export const selectCampsiteById = (id) => (state) => {
+    return state.campsites.campsitesArray.find(
+        (campsite) => campsite.id === parseInt(id)
+    );
+};
+
+export const selectFeaturedCampsite = (state) => {
+    return state.campsites.campsitesArray.find((campsite) => campsite.featured);
 };
