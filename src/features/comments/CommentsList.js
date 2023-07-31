@@ -9,7 +9,6 @@ import Error  from '../../components/Error';
 const CommentsList = ({ campsiteId }) => {
     const comments = useSelector(selectCommentsByCampsiteId(campsiteId));
     console.log('comments:', comments);
-
 const isLoading = useSelector((state) => state.comments.isLoading);
 const errMsg = useSelector((state) => state.comments.errMsg); // week 5
     
