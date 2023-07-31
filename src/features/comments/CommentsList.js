@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import CommentForm from '../CommentForm.js';
-import {Col} from 'reactstrap';
-import Comment from './comment.js';
-import { selectCommentsByCampsiteId } from './commentsSlice.js';
+import CommentForm from './CommentForm';
+import {Col, Row} from 'reactstrap';
+import Comment from './comment';
+import { selectCommentsByCampsiteId } from './commentsSlice';
 import Loading from '../../components/Loading';
 import Error  from '../../components/Error';
 
