@@ -10,8 +10,8 @@ import {
     FormGroup
 } from 'reactstrap';
 import { validateCommentForm } from '../../utils/validateCommentForm';
+import { postComment } from './commentsSlice';
 // import { addComment } from './commentsSlice';
-import { addComment } from './commentsSlice';
 
 const CommentForm = ({ campsiteId }) => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -27,7 +27,7 @@ const CommentForm = ({ campsiteId }) => {
             date: new Date(Date.now()).toISOString()
         };
         console.log('comment:', comment);
-        dispatch(addComment(comment));
+        dispatch(postComment(comment));
         setModalOpen(false);
     };
 
