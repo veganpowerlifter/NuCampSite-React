@@ -1,17 +1,17 @@
 import { useSelector } from 'react-redux';
 import CommentForm from './CommentForm';
-import {Col, Row} from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import Comment from './comment';
 import { selectCommentsByCampsiteId } from './commentsSlice';
 import Loading from '../../components/Loading';
-import Error  from '../../components/Error';
+import Error from '../../components/Error';
 
 const CommentsList = ({ campsiteId }) => {
     const comments = useSelector(selectCommentsByCampsiteId(campsiteId));
     console.log('comments:', comments);
-const isLoading = useSelector((state) => state.comments.isLoading);
-const errMsg = useSelector((state) => state.comments.errMsg); // week 5
-    
+    const isLoading = useSelector((state) => state.comments.isLoading);
+    const errMsg = useSelector((state) => state.comments.errMsg); // week 5
+
     if (isLoading) {
         return (
             <Row>
@@ -19,7 +19,7 @@ const errMsg = useSelector((state) => state.comments.errMsg); // week 5
             </Row>
         );
     }
-    
+
     if (errMsg) {
         return (
             <Row>
@@ -27,7 +27,7 @@ const errMsg = useSelector((state) => state.comments.errMsg); // week 5
             </Row>
         );
     }
-    
+
     if (comments && comments.length > 0) {
         return (
             <Col md='5' className='m-1'>
@@ -46,4 +46,4 @@ const errMsg = useSelector((state) => state.comments.errMsg); // week 5
     );
 };
 
-    export default CommentsList;
+export default CommentsList;

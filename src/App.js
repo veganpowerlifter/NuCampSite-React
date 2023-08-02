@@ -1,4 +1,4 @@
-import { useEffect } from'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import ContactPage from './pages/ContactPage';
@@ -29,7 +29,7 @@ function App() {
             <Header />
             <Routes>
                 <Route path='about' element={<AboutPage />}></Route>
-            <Route
+                <Route
                     path='directory/:campsiteId'
                     element={<CampsiteDetailPage />}
                 />
